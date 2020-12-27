@@ -1,26 +1,49 @@
-var x = 4, y = "4"
+/**CONDICIONALES */
 
-//Toma los valores e iguala el tipo de datos y luego los compara
-x=y   // es asignacion
-x==y  // Iguala los tipos y compara el valor
-x===y // VAlida si tienen el mismo tipo de y si lo tiene los compara
+var sacha = {
 
-//SIempre conviene utilizar el ===
-//en pdn siemre se ocupa ===
-
-/***COMPARANDO OBJETOS */
-//Siempre que no apunten al la misma referencia dara false
-var sacha= {
-    nombre : 'sacha'
+    nombre : 'Sacha',
+    apellido : 'Lift',
+    edad:30,
+    ingeniero: true,
+    cantante: false, 
+    drone: true
 }
 
-//tambien dara false ya que es otro objeto
-// es otro lugar en memoria RAM
-//var otraPersona = { //objeto literal
- //   ...sacha
-//}
 
-/**Si se modifican sus propiedad afecta a los dos
- * 
- */
-var otraPersona = sacha
+function imprimirProfesiones(persona)
+{
+                    //TMPLATE STRING
+    console.log(`${persona.nombre} es :  `)
+        //=== por que me interesa validar el tipo de dato tambien
+    if (persona.ingeniero===true){
+       console.log('Ingeniero')
+                    } else{
+        console.log('No es ingeniero')                
+                    }
+
+                    if (persona.cantante===true){
+                        console.log('cantante')
+                                     } else {
+                        console.log('No es cantante')                    
+                                     }
+                                     
+                                     if (persona.drone===true){
+                                        console.log('piloto de drone')
+                                                     } else {
+                                        console.log('No es droner')                 
+                                                     }
+}
+
+//funcion reto determinar la mayoria de edad o no de Sasha
+
+function esMayorDeEdad(persona){
+
+console.log(`Segun la edad de ${persona.nombre}`)
+if (persona.edad>=18){
+    console.log(`Es mayoor de edad`)
+                     }else {
+    console.log(`No es mayor de edad`)
+                     }
+
+}
