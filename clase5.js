@@ -22,31 +22,48 @@ var pillo = {
 //Por regla asi van
 const MAYORIA_DE_EDAD= 18;
 
+//Asignar a una variable una funcion 
 
-//funcion reto determinar la mayoria de edad o no de Sasha
-function imprimiEsMayorDeEdad(persona){
+// es una funcion anonima por que no tiene nombre
 
-console.log(`Segun la edad de ${persona.nombre}`)
-if (persona.edad>=18){
-    console.log(`Es mayoor de edad`)
-                     }else {
-    console.log(`No es mayor de edad`)
-                     }
-}
+//eSTO ES UN ARROW FUNCTION =) =) =) 
+//const esMayordeEdad = persona =>{ return persona.edad >= MAYORIA_DE_EDAD}
 
-//dividir la funcion en  mas pequeñas
-function esMayorDeEdad(persona){
-    return persona.edad>= MAYORIA_DE_EDAD
-                               }
+//arrow funtion simplificada =es hermosa
+//const esMayordeEdadSimple = persona => persona.edad >= MAYORIA_DE_EDAD
+                                  
+//arrow funcion aun mas simple //solo la prpiedad en juego
+const esMayordeEdad = ({edad}) => edad >= MAYORIA_DE_EDAD
 
-function imprimeMayoriaEdad(persona){
-        //si la condicion es true
-        if(esMayorDeEdad(persona)){
-            console.log(`${persona.nombre} es mayor de edad`)
-        }else{
-            console.log(`${persona.nombre} es menor de edad`)
+function imprimirMayoriaEdad(persona){
+    if(esMayordeEdadMasSimple(persona)){
+            console.log("MAYOR")
+        } else {
+            console.log("Menor")
+        }
                                     }
 
-}
 
+function permitirAcceso(){
+
+    if(!esMayordeEdadMasSimple){
+                console.log("Acceso denegado")
+                               }
+                else
+            {
+            console.log("Acceso permitido")    
+            }
+
+}
+        //ARROW FUNCTION ES MENOR DE EDAD
+const esMenordeEdad = ({edad})  => edad <= MAYORIA_DE_EDAD
+
+function printIfMenorAge(persona){
+
+    if(esMenordeEdad(persona)){
+            console.log("Es menor de edad")
+        } else {
+            console.log("Es mayor de edad")
+        }
+                                    }
 
