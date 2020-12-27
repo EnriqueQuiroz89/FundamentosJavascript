@@ -1,31 +1,26 @@
+var x = 4, y = "4"
 
-var sacha = {
-    nombre: 'Sacha',
-    apellido: 'Lifsick',
-    edad: 28
-            }
+//Toma los valores e iguala el tipo de datos y luego los compara
+x=y   // es asignacion
+x==y  // Iguala los tipos y compara el valor
+x===y // VAlida si tienen el mismo tipo de y si lo tiene los compara
 
-/**LOS obsjetos que pasamos por parametro se pasna por referncia */
-/**Si pasamos un objeto a una funcion por default este objeto
- * sufria cambios en sus atributos
-  */
-function cumpleaños(persona){
- persona.edad += 1
+//SIempre conviene utilizar el ===
+//en pdn siemre se ocupa ===
+
+/***COMPARANDO OBJETOS */
+//Siempre que no apunten al la misma referencia dara false
+var sacha= {
+    nombre : 'sacha'
 }
 
-/**Si pasamos un variable y no objeto
- * sufria cambios en sus atributos
-  */
- function bird(edad){
-    edad += 1
-   }
-   
- /**Evitar efecto colateral*/
- //crear otro objeto de tipo persona
- function cumple(persona)
- {
-     return{ //creo otro objeto al cual si le quiero modificar su propiedades
-     ...persona,
-     edad : persona.edad + 1 
-    }
- }  
+//tambien dara false ya que es otro objeto
+// es otro lugar en memoria RAM
+//var otraPersona = { //objeto literal
+ //   ...sacha
+//}
+
+/**Si se modifican sus propiedad afecta a los dos
+ * 
+ */
+var otraPersona = sacha
