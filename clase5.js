@@ -11,33 +11,20 @@ var sacha = {
 }
 
 
-function imprimirProfesiones(persona)
-{
-                    //TMPLATE STRING
-    console.log(`${persona.nombre} es :  `)
-        //=== por que me interesa validar el tipo de dato tambien
-    if (persona.ingeniero===true){
-       console.log('Ingeniero')
-                    } else{
-        console.log('No es ingeniero')                
-                    }
+var pillo = {
 
-                    if (persona.cantante===true){
-                        console.log('cantante')
-                                     } else {
-                        console.log('No es cantante')                    
-                                     }
-                                     
-                                     if (persona.drone===true){
-                                        console.log('piloto de drone')
-                                                     } else {
-                                        console.log('No es droner')                 
-                                                     }
+    nombre : 'Pillo',
+    apellido : 'Lopez',
+    edad:5
 }
 
-//funcion reto determinar la mayoria de edad o no de Sasha
+//Indicar que una variable es una constante
+//Por regla asi van
+const MAYORIA_DE_EDAD= 18;
 
-function esMayorDeEdad(persona){
+
+//funcion reto determinar la mayoria de edad o no de Sasha
+function imprimiEsMayorDeEdad(persona){
 
 console.log(`Segun la edad de ${persona.nombre}`)
 if (persona.edad>=18){
@@ -45,5 +32,21 @@ if (persona.edad>=18){
                      }else {
     console.log(`No es mayor de edad`)
                      }
+}
+
+//dividir la funcion en  mas pequeñas
+function esMayorDeEdad(persona){
+    return persona.edad>= MAYORIA_DE_EDAD
+                               }
+
+function imprimeMayoriaEdad(persona){
+        //si la condicion es true
+        if(esMayorDeEdad(persona)){
+            console.log(`${persona.nombre} es mayor de edad`)
+        }else{
+            console.log(`${persona.nombre} es menor de edad`)
+                                    }
 
 }
+
+
