@@ -14,19 +14,25 @@ var sacha = {
                         }
 
 //Le digo que solo obetnga el atributo nombre del objeto
-function imprimirNombreENMayusculas({nombre}){
+function imprimirNombreENMayusculas(persona){
+    // var nombre = persona.nombre
+    var {nombre} = persona  
     console.log(  nombre.toUpperCase())
       }
 
     //Accediendo al objeto
 //Ahora paso el objeto y el metodo se encarga de extarer su nombre
 
-    imprimirNombreENMayusculas(sacha)
-    imprimirNombreENMayusculas(dario)
+  //  imprimirNombreENMayusculas(sacha)
+   // imprimirNombreENMayusculas(dario)
 
-    //Creando un objeto en caliente
-    imprimirNombreENMayusculas({nombre: "Pepito"})
-    //No podemos desglosar un objeto que noe xiste
- //   imprimirNombreENMayusculas()
 
-    imprimirNombreENMayusculas({apellido: "Gomez"})
+    function imprimirNombreYedad(persona){
+        var {nombre}= persona
+        var {edad} = persona
+        //USar interpolacion
+        console.log(`Hola me llamo ${nombre} y tengo ${edad}`)
+    }
+
+    imprimirNombreYedad(sacha)
+    imprimirNombreYedad(dario)
