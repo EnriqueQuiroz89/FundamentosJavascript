@@ -1,38 +1,31 @@
-//represantcion del objeto
-// un objeto no es mas que clave o valor
+
 var sacha = {
     nombre: 'Sacha',
     apellido: 'Lifsick',
     edad: 28
             }
 
+/**LOS obsjetos que pasamos por parametro se pasna por referncia */
+/**Si pasamos un objeto a una funcion por default este objeto
+ * sufria cambios en sus atributos
+  */
+function cumpleaños(persona){
+ persona.edad += 1
+}
 
-            var dario = {
-                nombre: 'DArio',
-                apellido: 'Susninsky',
-                edad: 28
-                        }
-
-//Le digo que solo obetnga el atributo nombre del objeto
-function imprimirNombreENMayusculas(persona){
-    // var nombre = persona.nombre
-    var {nombre} = persona  
-    console.log(  nombre.toUpperCase())
-      }
-
-    //Accediendo al objeto
-//Ahora paso el objeto y el metodo se encarga de extarer su nombre
-
-  //  imprimirNombreENMayusculas(sacha)
-   // imprimirNombreENMayusculas(dario)
-
-
-    function imprimirNombreYedad(persona){
-        var {nombre}= persona
-        var {edad} = persona
-        //USar interpolacion
-        console.log(`Hola me llamo ${nombre} y tengo ${edad}`)
+/**Si pasamos un variable y no objeto
+ * sufria cambios en sus atributos
+  */
+ function bird(edad){
+    edad += 1
+   }
+   
+ /**Evitar efecto colateral*/
+ //crear otro objeto de tipo persona
+ function cumple(persona)
+ {
+     return{ //creo otro objeto al cual si le quiero modificar su propiedades
+     ...persona,
+     edad : persona.edad + 1 
     }
-
-    imprimirNombreYedad(sacha)
-    imprimirNombreYedad(dario)
+ }  
