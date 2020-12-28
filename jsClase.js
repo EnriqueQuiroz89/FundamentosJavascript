@@ -1,84 +1,71 @@
-
-/**COLLECIONES EN js */
-
-var vicky = {
-   nombre: 'Vicky',
-   apellido: 'Lpez',
-   altura: 1.65,
-   cantidadLibros: 190
-            }
-
-var vic = {
-   nombre: 'Vic',
-   apellido: 'Lpez',
-   altura: 1.99,
-   cantidadLibros: 150
-
-            }
-
-            
-var Tor = {
-   nombre: 'Tor',
-   apellido: 'Lpez',
-   altura: 1.89,
-   cantidadLibros: 120
-            }
-
-var personas = [vicky, vic, Tor]
-
-for(var i=0 ; i<personas.length; i++){
-
-   var persona = personas[i]
-
-//console.log(`${persona.nombre}  mide ${persona.altura}`)
+//** prototipos  == clase en java */
+  
+//Prototipo siempre son objetos
+function heredaDe(prototipoHijo, prototipoPadre){
+         var fn = function() {} // funcion vacia
+         /** */
+         fn.prototype= prototipoPadre.prototype
+         
+         prototipoHijo.prototype = new fn 
+        
+         prototipoHijo.prototype.constructor  = prototipoHijo
 
 }
-      //condicion por separado
-/**Filtrar de un array*/  /**Si es mayor devuelve la persona */
-var esAlta = ({altura}) => altura > 1.8
-var personasAltas = personas.filter(esAlta)
-//  //console.log(personasAltas)
 
-         //condicion dentro con arow function
-//es una persona bajita
-var personasBajitas = personas.filter(({altura}) => altura< 1.8 )
-//console.log(personasBajitas)
+/**Puede recibir parametros */
+function Persona(nombre, apellido, altura){
+   this.nombre = nombre
+   this.apellido = apellido
+   this.altura = altura
 
+   //atributos por default de un objeto
+   this.edad = 25
+  }
 
-/*** TRANSFORMAR UN ARRAY*/
-var pasarAlturaAcmOld= persona => {
-   return{                       //cuando no quiero modificar el objeto que me pasen
-         ...persona,             //Creo otro objeto que se almacenara en otro array
-         altura : persona.altura* 100
-         }
-}
-                                //desgloso el OBJ  //Creo uno nuevo a partir y le camvio la altur
-var pasarAlturaAcm= persona => ({  ...persona,     altura : persona.altura* 100 })  //con los () lo retorno WOOOW
+  /**En este tipo de metodos el this es la ventana del navegador*/
+  //this===window sera true
+/**Dara ERROR*/Persona.prototype.saludarBad = () =>   console.log(`Hola me llamo ${this.nombre}  ${this.apellido}`)
+/**Dara ERROR*/Persona.prototype.esAltoBad = () => this.altura > 1.80
 
+Persona.prototype.saludar = function() { console.log(`Hola me llamo ${this.nombre}  ${this.apellido}`)}
+Persona.prototype.esAlto = function() {return this.altura > 1.80 }
 
-/**map devuelve un nuevo array*/
-var personasCm = personas.map(pasarAlturaAcm)
-
-var acum1= 0;
-
-/**Sumar un atributo de cada elemtno en un arreglo */
-for(var i = 0; i< personas.length; i++){
-       acum = acum + personas[i].cantidadLibros
+//EN este tipo de funciones el this se refiere al objeto que la invoca
+Persona.prototype.soyAlto = function(){ 
+   //2) La evaluacion retorna un true o false
+  var mayorDeUnoOchenta = ({altura})=> altura >1.80
+                    //1) paso el objeto a la evaluacion    
+   if (mayorDeUnoOchenta(this)){ 
+      console.log(`Soy una persona alta por que mido ${this.altura}`) //3) si se cumple mando msg
+   } else{
+      console.log(`Soy una persona bajita por que mido ${this.altura}`) //3) si se cumple mando msg
    }
 
-   var acum=0;
-   //OPcion 2 de sumar atributos en un arreglo
+}
 
-                           //desestructuramos el objeto
-   const reducer = (acum, {cantidadLibros}) =>  acum+ cantidadLibros
-
-   var totalLibros = personas.reduce( reducer, 0)
-
+ /**Asi se crea un nuevo objeto */
+//var pedro = new Persona('Pedro', 'MArmol', 1.90)
+//var maria = new Persona('maria', 'Peña', 1.78)
+//var artemio = new Persona('Arturo', 'Sandoval', 1.95)
 
 
+/**Herencia PROTOTIPAL */
+function Desarrollador(nombre, apellido) {
+
+   this.nombre = nombre
+   this.apellido = apellido
+}
+
+heredaDe(Desarrollador, Persona) /**Importante el orden */
+
+//equivale a un override
+Desarrollador.prototype.saludar= function(){
+      console.log(`Hola mi nombre es ${this.nombre} ${this.apellido} y soy Desarrollador`)      
+}
 
 
 
+var hendyDev = new Desarrollador('Enrique','Quiroz')
 
 
 
