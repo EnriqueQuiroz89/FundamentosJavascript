@@ -37,7 +37,24 @@ function onError(id){
     console.log(`Sucedio un error al obtener el personaje ${id}`)
 }
 
-promiseObtenerPersonaje(1)
+//usar un map
+var ids= [1,2,3,4,5,6,7]
+
+/* var promesas = ids.map(function(id){
+                return promiseObtenerPersonaje(id) })
+ */
+
+ // //contruye el arreglo promesas a partir de otro
+var promesas = ids.map(  (id)=> promiseObtenerPersonaje(id) ) //son promesas no resuletas
+
+//Queda muy bien y son tareas en paralelo
+Promise.all(promesas)                                  /**Recibo todos */
+        .then(personajes => console.log(personajes))   /**Que hago con ello?? Los imprimo */
+        .catch(onError)                                /**Arroja error si cualquiera falla */
+
+
+
+/* promiseObtenerPersonaje(1)
        .then(personaje =>{
            console.log(`El personaje 1 es ${personaje.name}`)
            return promiseObtenerPersonaje(2)
@@ -58,4 +75,4 @@ promiseObtenerPersonaje(1)
             console.log(`El personaje 5 es ${personaje.name}`)
         })
        .catch(onError)   //el catch es el mismo para todos
-                        
+                         */
