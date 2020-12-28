@@ -1,29 +1,11 @@
 ///impelementar JQuery de un cdn
 //CDN es un Contain Delivery Network
-
-
 const API_URL = 'https://swapi.dev/api/'
 const PEOPLE_URL = 'people/:id'
 
 //Parametros para el Request
 const lukeUrl = `${API_URL}${PEOPLE_URL.replace(':id',1)}`  //interpolacion
 const opts = {crossDomain: true} //opciones
-
-//const onPeopleResponse = function(persona){ console.log(`Hola yo soy ${persona.name}`) }
-//Nos permite hacer un Request
-
-                                /**TENEMOS 2 CALLBACK EN LA MISMA FUNCION */
-function obtenerPersonaje(id, callback ){
-    const url= `${API_URL}${PEOPLE_URL.replace(':id',id)}`  
-   
-     //   ¿donde?  ¿como?  ¿si exito ...? ¿Si fallo?
-    $.get(url,     opts,     callback)
-     .fail( ()=> console.log(`Error, No se pudo obtener el personaje ${id}`) )  
-}  
-
-//obtenerPersonaje(1, function(persona){ console.log(`Soy ${persona.name}`) })
-
-//-------------------------------------------------------------------------------
 
 /**  Estructura de una promesa
  * 
@@ -56,8 +38,24 @@ function onError(id){
 }
 
 promiseObtenerPersonaje(1)
-       .then(function(personaje){
-             console.log(`El personaje 1 es ${personaje.name}`)
+       .then(personaje =>{
+           console.log(`El personaje 1 es ${personaje.name}`)
+           return promiseObtenerPersonaje(2)
         })
-       .catch(onError)
+        .then(personaje =>{
+           console.log(`El personaje 2 es ${personaje.name}`)
+           return promiseObtenerPersonaje(3)
+        })
+        .then(personaje =>{
+            console.log(`El personaje 3 es ${personaje.name}`)
+            return promiseObtenerPersonaje(4)
+        })
+        .then(personaje =>{
+            console.log(`El personaje 4 es ${personaje.name}`)
+            return promiseObtenerPersonaje(5)
+        })
+        .then(personaje =>{
+            console.log(`El personaje 5 es ${personaje.name}`)
+        })
+       .catch(onError)   //el catch es el mismo para todos
                         
