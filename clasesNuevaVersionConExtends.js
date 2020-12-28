@@ -6,33 +6,59 @@ class Persona {
       this.apellido = apellido
       this.altura = altura
                }
+            //pasar la funcion es opcional   
+   saludar(fn){
+//      var nombre = this.nombre
+//      var apellido = this.apellido
+   var {nombre, apellido}= this   /**Desestructuro el nombre ya pellido*/
 
-   saludar(){console.log(`Hola me llamo ${this.nombre}  ${this.apellido}`)}
+      console.log(`Hola me llamo ${nombre}  ${apellido}`)
 
-   soyAlto(){return this.altura > 1.80} 
-
-
-}
-
-class Desarrollador extends Persona {
-   constructor(nombre, apellido, altura){
-
-      super(nombre, apellido, altura) //*LLamando al contructor de la clase padre
-
-   }
-
-   //Pero los metods que se invocan los busca primero en la clase hijo y sigue 
-   //hasta llegar a la clase padre
-   saludar(){
-      console.log(`Hola, me llamo ${this.nombre} ${this.apellido} y soy develpment`)
+         if(fn){  // En caso de si recibir una funcion como parametro y que sea definida
+                  fn(nombre, apellido, false)            
+               }
             }
 
+   soyAlto(){return this.altura > 1.80} 
 }
 
+/**hereda de persona */
+class Desarrollador extends Persona {
+   constructor(nombre, apellido, altura){
+      super(nombre, apellido, altura) //*LLamando al contructor de la clase padre
+     }
 
+    saludar(fn){
 
+        var {nombre, apellido}= this
 
+        console.log(`Hola, me llamo ${nombre} ${apellido} y soy develpment`)
 
+      if(fn){ 
+         fn(nombre, apellido, true)            
+      }
+              }
+}
+
+                                         //ademas un boolean que determine si es dev o no
+function responderSaludo(nombre, apellido, esDev){
+   console.log(`Buen dia ${nombre} ${apellido}`)
+
+   if(esDev){
+      console.log(`Ah mira, no sabia que eras desarrollador`)
+   }
+}
+
+/**Crear objetos */
+var sordon= new Persona('eri','quiroz',159)
+var peru = new Persona('sorir', 'epaae', 182)
+var mark = new Desarrollador('Mark', 'Suckenber', 189)
+
+//pasndo funciones como parametro =)
+
+sordon.saludar()
+peru.saludar(responderSaludo)
+mark.saludar(responderSaludo)
 
 
 
