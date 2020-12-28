@@ -18,30 +18,46 @@ function obtenerPersonaje(id, callback ){
    
      //   ¿donde?  ¿como?  ¿si exito ...? ¿Si fallo?
     $.get(url,     opts,     callback)
-     .fail( ()=>{
-        console.log(`No se pudo obtener el personaje ${id}`)
-                }
-          )  
+     .fail( ()=> console.log(`Error, No se pudo obtener el personaje ${id}`) )  
+}  
+
+//obtenerPersonaje(1, function(persona){ console.log(`Soy ${persona.name}`) })
+
+//-------------------------------------------------------------------------------
+
+/**  Estructura de una promesa
+ * 
+new Promise(function(resolve, reject){
+    ...
+}).then(valor => {
+    ...
+}).catch(err=>{
+    ....
+})
+ */
+
+function promiseObtenerPersonaje(id){
+
+    const url= `${API_URL}${PEOPLE_URL.replace(':id',id)}`  
+  
+return new Promise(function(resolve, reject){
+    //llamado asincrono con jquery
+   $.get(url, opts, function (data){
+        resolve(data)  //Solo si Get exitoso
+    })
+    .fail( ()=> reject(id) )   //SI falla            
+})  /**Aqui va el .then*/
+    /**Aqui va el  */
 }
 
 
-//esto es peticiones en Serie y no en ASCINCRONISMO
+function onError(id){
+    console.log(`Sucedio un error al obtener el personaje ${id}`)
+}
 
-  //CALL BACK HELLL
-
-obtenerPersonaje(1, function(persona){  //HACE DOS COSAS
-/**1*/  console.log(`Soy ${persona.name}`)
-/**2*/obtenerPersonaje(2, function(persona){ //hace 2 cosas
-   /**1*/ console.log(`Soy ${persona.name}`)
-   /**2*/ obtenerPersonaje(3, function(persona){ //hace 2 cosas
-       /**1*/console.log(`Soy ${persona.name}`)
-       /**2*/obtenerPersonaje(4,function(persona){ //hace 2 cosas
-           /**1*/console.log(`Soy ${persona.name}`)
-           /**2*/obtenerPersonaje(5, function(persona){ //hace 2 cosas
-                /**1*/console.log(`Soy ${persona.name}`)
-                /**2*/obtenerPersonaje(6, null)
-                                              })
-                                         })
-                                      })
-                                  })
-                        })
+promiseObtenerPersonaje(1)
+       .then(function(personaje){
+             console.log(`El personaje 1 es ${personaje.name}`)
+        })
+       .catch(onError)
+                        
