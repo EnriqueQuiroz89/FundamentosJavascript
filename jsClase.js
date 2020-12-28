@@ -1,27 +1,21 @@
-//javascript solo hace una sola cosa a la vez No es multitarea
-//Para cmpnesar hace uso del eventLoop
-
-//NO VOY A BLOQUEAR EL EL EVENT LOOP
-
-//¿Que hacemo en forma asincrona ?
-/**
- * Mostra un alert 
- * cambios en el DOM
- * fetch a una api
- */
+///impelementar JQuery de un cdn
+//CDN es un Contain Delivery Network
 
 
-/**HIPER DATO
- * Si yo le pongo setTimeout(¿Qu funcion?,¿En que tiempo? )lo pone en otra cola de tareas
- * 
- * Y primero ejectua las tareas del programa principal 
- * 
- * Y al ultimo comienza a sacar las actividades pendientes de la cola de tareas.
- * 
- * 
- */
+const API_URL = 'https://swapi.dev/api/'
+const PEOPLE_URL = 'people/:id'
 
+//Parametros para el Request
+const lukeUrl = `${API_URL}${PEOPLE_URL.replace(':id',1)}`  //interpolacion
+const opts = {crossDomain: true} //opciones
 
+const onPeopleResponse = function(persona){ console.log(`Hola yo soy ${persona.name}`) }
+//Nos permite hacer un Request
 
+                    //es una funcion que se pasa Por parametro
+                    // y que se va ejecutar si se termina el request
+$.get(lukeUrl, opts, onPeopleResponse )
 
-
+/**Callback es una funcion que se va a ejecutar en el futuro y no sabemops cuando */
+//$.get sera el encargado de llamar al callback si se termina el request
+var maria = "Maria"
