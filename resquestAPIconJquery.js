@@ -12,15 +12,10 @@ const opts = {crossDomain: true} //opciones
 const onPeopleResponse = function(persona){ console.log(`Hola yo soy ${persona.name}`) }
 //Nos permite hacer un Request
 
-function obtenerPersonaje(id){
-    const url= `${API_URL}${PEOPLE_URL.replace(':id',id)}`  
-    $.get(url, opts, onPeopleResponse )
-}
+                    //es una funcion que se pasa Por parametro
+                    // y que se va ejecutar si se termina el request
+$.get(lukeUrl, opts, onPeopleResponse )
 
-//demostracion del asincronismo 
-//No sabemos en que orden nos va a llegar cada una
-obtenerPersonaje(1)
-obtenerPersonaje(2)
-obtenerPersonaje(3)
-obtenerPersonaje(4)
-obtenerPersonaje(5)
+/**Callback es una funcion que se va a ejecutar en el futuro y no sabemops cuando */
+//$.get sera el encargado de llamar al callback si se termina el request
+var maria = "Maria"
