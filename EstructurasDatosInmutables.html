@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Clase - Estructura de datos inmutables</title>
+  </head>
+  <body>
+    <script>
+
+// hacer esto cuando queremos evitar el efecto de lado
+// que la ejecucion de funciones modifique el objeto original
+
+/**aSI TIENE EFECTO DE LADO aunque sea CONSTANTE*/
+const sacha ={
+    nombre: 'Henrique',
+    appellido: 'Perez',
+    edad: 34
+}
+
+//const cumpleanos = persona => persona.edad ++
+
+const cumpleaniosInmutable = persona => ({
+    ...persona ,     // desglosamos a la persona 
+                     /**Tomamos cada atributo y lo ponemos en otro objeto*/
+    edad: persona.edad +1   //cambiamo el valor del atribuot pero solo del nuevo objeto 
+})
+
+// DE ESTA ULTIM FORMA EVITAMOS EL EFECTO DE LADO Y LOS BUGS
+// Y EVITAMOS CONTAMINAR EL CODIGO
+</script>
+  </body>
+</html>
