@@ -94,7 +94,7 @@
     </div>
     <script>
         
-/**Botones de colores*/
+/**Botones de colores*/  //constantes de clase
         const celeste = document.getElementById('celeste')
         const violeta = document.getElementById('violeta')
         const naranja = document.getElementById('naranja')
@@ -111,7 +111,8 @@
         }
 //funciones de clase
         inicializar(){
-            btnEmpezar.classList.add('hide') //OCULTA EL BOTON
+            this.elegirColor = this.elegirColor.bind(this) //para asegurar la referencia al this
+            btnEmpezar.classList.add('hide') //Ocultar el boton
             this.nivel = 1
             this.colores = {
                 celeste,
@@ -126,7 +127,8 @@
         }
 
         siguienteNivel(){
-            this.iluminarSecuencia()            
+            this.iluminarSecuencia()   
+            this.agregarEventosClick()         
         }
 
         transformarNumeroAcolor(numero){
@@ -162,6 +164,18 @@
         apagarColor(color){
             this.colores[color].classList.remove('light')
         }
+
+        agregarEventosClick(){
+            this.colores.celeste.addEventListener('click', this.elegirColor)
+            this.colores.verde.addEventListener('click',   this.elegirColor)
+            this.colores.violeta.addEventListener('click', this.elegirColor)
+            this.colores.naranja.addEventListener('click', this.elegirColor)   
+        }
+        //quie es el this
+        elegirColor(ev){
+            
+        }
+
         }
 
 
