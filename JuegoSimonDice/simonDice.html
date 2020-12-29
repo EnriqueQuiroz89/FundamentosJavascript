@@ -94,7 +94,32 @@
     </div>
     <script>
         
+/**Botones de colores*/
+        const celeste = document.getElementById('celeste')
+        const violeta = document.getElementById('violeta')
+        const naranja = document.getElementById('naranja')
+        const verde = document.getElementById('verde')
+/*Boton inicio*/
+        const btnEmpezar = document.getElementById('btnEmpezar')
 
-    </script>
+        //creando prototipo
+        class Juego{
+                constructor(){
+                     this.inicializar()
+        }
+//funciones de clase
+        inicializar(){
+            btnEmpezar.classList.add('hide') //OCULTA EL BOTON
+                     }
+
+        }
+
+
+//accion del boton        
+var empezarJuego = () => {
+            var juego = new Juego() 
+}
+
+</script>
   </body>
 </html>
