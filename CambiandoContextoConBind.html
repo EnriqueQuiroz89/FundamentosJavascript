@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Clase - Estructura de datos inmutables</title>
+  </head>
+  <body>
+    <script>
+      ///en asincroonia el this. no es quien esperamos que sea
+
+/**Metodos para cambiar el contexto de una funcion
+    .bind
+    .call
+    .apply
+*/
+
+/**Ejemplo con .bind()*/
+            const sacha = {
+                nombre: 'Sacha',
+                apellido : 'Perez'
+            }
+
+            const leo = {
+                nombre: 'leo'
+            }
+
+      function saludar(){
+          console.log(`Hola, mi nombre es ${this.nombre}`)  //This === windows  & windows.nombre = undefined
+      }      
+         //devuelve una nueva funcion atando la funcion al objeto  ¿Quien es this? EL objeto
+      const saludarASacha = saludar.bind(sacha) // atamos el this al obejto sacha
+      const saludarALeo = saludar.bind(leo) // atamos el this a leo
+
+function otroSaludo(saludo= 'Hola'){   // valor por defecto
+    console.log(`${saludo}, mi nombre es ${this.nombre}`)
+}
+
+        /**Mediante el bind() puedo pasar paramtros a la funcion
+         *  bind('Le digo quien es THIS',  ...  ) 
+         *  bind('Ya le dije quien es THIS', 'ahora le paso el parametro que requiere')*/                        
+      setTimeout(otroSaludo.bind(leo, 'Hola che'), 2000)
+
+
+
+</script>
+  </body>
+</html>
