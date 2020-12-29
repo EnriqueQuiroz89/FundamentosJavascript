@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Clase - Estructura de datos inmutables</title>
+  </head>
+  <body>
+    <script>
+   
+/**Metodos para cambiar el contexto de una funcion
+    .bind
+    .call
+    .apply
+*/
+
+/**Ejemplo con .call()*/
+            const sacha = {
+                nombre: 'Sacha',
+                apellido : 'Perez'
+            }
+
+            const leo = {
+                nombre: 'leo'
+            }
+
+      function saludar(saludo= 'Hola'){
+          console.log(`${saludo} , mi nombre es ${this.nombre}`)  //This === windows  & windows.nombre = undefined
+      }      
+   
+
+      saludar.call(sacha, 'Hola che')  // mas parametros van en ese orden
+
+      saludar.apply(sacha, ['Hola']) // EL segundo parametro es un array
+
+
+      
+
+</script>
+  </body>
+</html>
