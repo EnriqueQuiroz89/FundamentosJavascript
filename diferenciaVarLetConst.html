@@ -7,46 +7,6 @@
   <body>
     <script>
 
-var sacha= {
-    nombre: "Sacha",
-    apellido: "salinas",
-    edad: 28
-           }
-
-          function edadConVar(persona){
-                var mensaje  //USo del hoisting es correcto
-                //var mensaje2
-             if(persona.edad>18){
-                 mensaje=`${persona.nombre} es mayor de edad`
-                  } else {
-                 mensaje=`${persona.nombre} es MENIO de edad`
-                var mensaje2= `Es otro valor`
-                }
-       
-             console.log(mensaje)
-            console.log(mensaje2)  //undefined pero no error // 
-                   }
-
-
-            
-          function edadConLet(persona){
-                
-               if(persona.edad>18){
-               let  mensaje=`${persona.nombre} es mayor de edad`
-                  } else {
-               let  mensaje=`${persona.nombre} es MENIO de edad`
-               let mensaje2
-                         }
-       
-             console.log(mensaje)  // no alcanzable, se limita al bloque  //error
-            console.log(mensaje2)  // no alcanzable, se limita al bloque  //error
-                   }
-       
-      edadConVar(sacha)              
-
-      
-      edadConLet(sacha)   
-
 
  //const LISTA_NUMEROS= [1,2,3,4,5]
 
