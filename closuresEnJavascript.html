@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Clase - Clousures </title>
+  </head>
+  <body>
+    <script>
+
+            function crearSaludo(finalDeFrase){  //funcion creadora o generadora de otras funciones
+                return function(nombre){
+
+                    console.log(`Hola ${nombre} como estas ${finalDeFrase}`)
+                }
+            }
+
+        /**Aqui la magia*/
+//Paso 1 asignar el final de la frase para inicializar pero no ejecuta el cuerpo Aun 
+          //ya que espera el parametro de la funcion interna 
+const saludoArgentino = crearSaludo('Che')
+const saludoMexicano = crearSaludo('guey')
+const saludoColombiano = crearSaludo('amigo')
+
+//Aqui ya invoca a la funcion interna con un segundo parametro
+// y recuerda la primer variable que se le envio
+ saludoArgentino('Fabian')
+ saludoMexicano('Roman')
+ saludoColombiano('Artemiso')
+
+</script>
+  </body>
+</html>
