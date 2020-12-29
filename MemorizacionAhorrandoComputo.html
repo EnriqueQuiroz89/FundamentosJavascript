@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Clase - Memorizacion </title>
+  </head>
+  <body>
+    <script>
+// permite ahorra computo 
+        /*
+        !6 = 6*5*4*3*2*1 = 720
+        !12 = 12*11*10*9*8*7*6*5*4*3*2*1 === 12*11*10*9*8*7* !6
+        */
+       
+        //Solo lo calcula la primera ves y lo guarda en la cache
+        // Si mas adelante el metodo es invocado de nuevo 
+    // extra el dato de la cache y lo devuleve
+
+ function factorial(n){
+
+    if(!this.cache){
+           this.cache= {}     
+                   }
+
+             debugger      
+       if(this.cache[n]){
+           return this.cache[n]
+       }            
+
+if (n===1){
+    return 1
+          } 
+    this.cache[n]= n * factorial(n-1)
+          debugger
+    return this.cache[n]
+ }
+
+
+
+
+    </script>
+  </body>
+</html>
